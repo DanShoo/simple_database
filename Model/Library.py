@@ -51,6 +51,21 @@ class Library:
             self.__library_model.get_by_id(index).delete_instance()
             return True
 
+    def update_book(self, index: int, book: Book):
+        assert isinstance(index, int), 'Номер книги должен быть целым числом'
+        assert isinstance(book, Book), 'Объект должен быть книгой'
+        query = self.__library_model.select().where(LibraryModel.id == index)
+        if not query.exists():
+            return False
+        else:
+            instance: LibraryModel
+            instance = self.__library_model.get_by_id(index)
+            instance.title = book.title
+            instance.author = book.author
+            instance.year = book.year
+            instance.save()
+            return True
+
     def get_books_by_id(self, index: int) -> tuple[bool, any]:
         assert isinstance(index, int), 'Номер книги должен быть целым числом'
         query = self.__library_model.select().where(LibraryModel.id == index)

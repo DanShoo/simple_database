@@ -1,6 +1,7 @@
 from Model.Commands.Add import CommandAdd
 from Model.Commands.Clear import CommandClear
 from Model.Commands.Exit import CommandExit
+from Model.Commands.Update import CommandUpdate
 from Model.Commands.Find import CommandFind
 from Model.Commands.List import CommandList
 from Model.Commands.Remove import CommandRemove
@@ -14,6 +15,7 @@ class CommandParser:
         self._commands = [CommandAdd(),
                           CommandFind(),
                           CommandRemove(),
+                          CommandUpdate(),
                           CommandList(),
                           CommandClear(),
                           CommandExit()]
